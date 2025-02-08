@@ -114,7 +114,7 @@ function App() {
           <div className="flex items-center space-x-2">
             <img src="/images/tablet.png" alt="Tablet" className="h-8 w-8" />
             <Stethoscope className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">{t('AI Health Assistant')}</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t('Dhanvantari')}</h1>
           </div>
           <div className="flex items-center space-x-4">
             <select

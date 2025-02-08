@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      "AI Health Assistant": "AI Health Assistant",
+      "Dhanvantari": "Dhanvantari",
       "Your Question": "Your Question",
       "AI Response": "AI Response",
       "Was this helpful?": "Was this helpful?",
@@ -129,7 +129,7 @@ const resources = {
   },
   hi: {
     translation: {
-      "AI Health Assistant": "एआई स्वास्थ्य सहायक",
+      "Dhanvantari": "एआई स्वास्थ्य सहायक",
       "Your Question": "आपका प्रश्न",
       "AI Response": "एआई प्रतिक्रिया",
       "Was this helpful?": "क्या यह सहायक था?",
@@ -254,7 +254,7 @@ const resources = {
   },
   kn: {
     translation: {
-      "AI Health Assistant": "ಎಐ ಆರೋಗ್ಯ ಸಹಾಯಕ",
+      "Dhanvantari": "ಎಐ ಆರೋಗ್ಯ ಸಹಾಯಕ",
       "Your Question": "ನಿಮ್ಮ ಪ್ರಶ್ನೆ",
       "AI Response": "ಎಐ ಪ್ರತಿಕ್ರಿಯೆ",
       "Was this helpful?": "ಇದು ಸಹಾಯಕವಾಗಿತ್ತಾ?",

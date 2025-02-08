@@ -52,7 +52,7 @@ const ChildHealth = () => {
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center space-x-2">
               <Stethoscope className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">{t('Child Health')}</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{t('Dhanvantari')}</h1>
             </Link>
           </div>
           <Link to="/" className="flex items-center space-x-2">

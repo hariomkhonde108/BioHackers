@@ -8,7 +8,7 @@ const CommonIllnesses = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       <header className="bg-white shadow-sm flex justify-between items-center px-4 py-4 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold text-gray-900">{t('Common Illnesses')}</h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t('Dhanvantari')}</h1>
         <Link to="/" className="text-blue-600 hover:underline">{t('Home')}</Link>
       </header>
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
