@@ -1,0 +1,55 @@
+.background-animations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none; /* Ensure background elements do not interfere with user interactions */
+}
+
+.background-animations .tablet,
+.background-animations .stethoscope,
+.background-animations .syringe {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: float 10s infinite ease-in-out;
+  opacity: 0.8; /* Add some transparency */
+}
+
+.background-animations .tablet {
+  background-image: url('/images/tablet.png'); /* Update the path to your image */
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.background-animations .stethoscope {
+  background-image: url('/images/stethoscope.png'); /* Update the path to your image */
+  top: 30%;
+  left: 50%;
+  animation-delay: 2s;
+}
+
+.background-animations .syringe {
+  background-image: url('/images/syringe.png'); /* Update the path to your image */
+  top: 60%;
+  left: 80%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
