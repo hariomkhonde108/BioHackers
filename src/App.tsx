@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Mic, MicOff, Loader2, Volume2, VolumeX, Stethoscope, Star, Languages } from 'lucide-react';
 import { useSpeechRecognition } from './hooks/useSpeechRecognition';
 import { useSpeechSynthesis } from './hooks/useSpeechSynthesis';
 import { supabase } from './lib/supabase';
 import { useLanguage } from './context/LanguageContext';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import './App.css'; // Import the CSS file for animations
 
 const SUPPORTED_LANGUAGES = [
@@ -15,7 +15,6 @@ const SUPPORTED_LANGUAGES = [
 ];
 
 function App() {
-  const navigate = useNavigate();
   const { language, setLanguage } = useLanguage();
   const { t, i18n } = useTranslation();
   const [transcript, setTranscript] = useState('');
@@ -99,6 +98,7 @@ function App() {
 
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage);
+    i18n.changeLanguage(newLanguage.split('-')[0]);
   };
 
   return (
@@ -119,7 +119,7 @@ function App() {
           <div className="flex items-center space-x-4">
             <select
               value={language}
-              onChange={(e) => setLanguage(e.target.value)}
+              onChange={(e) => handleLanguageChange(e.target.value)}
               className="rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 w-20"
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -186,33 +186,35 @@ function App() {
             )}
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-2 mb-8 float-right w-1/2">
-            <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Change Language')}</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className="bg-white px-2 py-1 rounded-lg text-sm text-gray-700 hover:bg-blue-100 transition-colors"
-                >
-                  {lang.name}
-                </button>
-              ))}
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="bg-blue-50 rounded-lg p-4 shadow-md">
+              <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Change Language')}</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className="bg-white px-2 py-1 rounded-lg text-sm text-gray-700 hover:bg-blue-100 transition-colors"
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="bg-blue-50 rounded-lg p-4 shadow-md mb-8">
-            <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Quick Topics')}</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {['Pregnancy Care', 'Child Health', 'Common Illnesses', 'Nutrition'].map((topic) => (
-                <button
-                  key={topic}
-                  onClick={() => navigate(`/${topic.toLowerCase().replace(' ', '-')}`)}
-                  className="bg-white px-4 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-100 transition-colors shadow-sm"
-                >
-                  {t(topic)}
-                </button>
-              ))}
+            <div className="bg-blue-50 rounded-lg p-4 shadow-md">
+              <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Quick Topics')}</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {['Pregnancy Care', 'Child Health', 'Common Illnesses', 'Nutrition'].map((topic) => (
+                  <Link
+                    key={topic}
+                    to={`/${topic.toLowerCase().replace(' ', '-')}`}
+                    className="bg-white px-4 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-100 transition-colors shadow-sm"
+                  >
+                    {t(topic)}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
