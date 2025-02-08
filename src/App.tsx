@@ -72,7 +72,7 @@ function App() {
       speak(simulatedResponse);
     } catch (error) {
       console.error('Error processing request:', error);
-      setResponse('Sorry, there was an error processing your request. Please try again.');
+      setResponse('Sorry Pranav, there was an error processing your request. Please try again. and make sure you are connected to the internet.');
     } finally {
       setIsLoading(false);
     }
@@ -161,16 +161,6 @@ function App() {
                 {isListening ? t('Tap to stop') : t('Tap to speak')}
               </p>
             </div>
-            <div className="text-center">
-              <button
-                onClick={() => isSpeaking ? stop() : response && speak(response)}
-                className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
-                  isSpeaking ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
-                }`}
-              >
-                {isSpeaking ? <Volume2 className="h-8 w-8" /> : <VolumeX className="h-8 w-8" />}
-              </button>
-            </div>
           </div>
 
           <div className="bg-gray-50 rounded-lg p-4 min-h-[200px] shadow-md mb-8">
@@ -183,6 +173,49 @@ function App() {
               >
                 {t('Submit')}
               </button>
+            )}
+          </div>
+
+          <div className="bg-blue-50 rounded-lg p-4 min-h-[200px] shadow-md mb-8">
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-sm font-medium text-gray-700">{t('AI Response')}</h2>
+              <button
+                onClick={() => isSpeaking ? stop() : response && speak(response)}
+                className={`p-2 rounded-full ${
+                  isSpeaking ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
+                }`}
+              >
+                <VolumeX className="h-4 w-4" />
+              </button>
+            </div>
+            {isLoading ? (
+              <div className="flex items-center justify-center h-32">
+                <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+              </div>
+            ) : (
+              <>
+                <p className="text-gray-900">{response || t('AI response will appear here...')}</p>
+                {response && (
+                  <div className="mt-4">
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Was this helpful?')}</h3>
+                    <div className="flex space-x-2">
+                      {[1, 2, 3, 4, 5].map((rating) => (
+                        <button
+                          key={rating}
+                          onClick={() => handleFeedback(rating)}
+                          className={`p-2 rounded-full ${
+                            feedbackRating === rating
+                              ? 'text-yellow-500'
+                              : 'text-gray-300 hover:text-yellow-500'
+                          }`}
+                        >
+                          <Star className="h-6 w-6" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -216,41 +249,6 @@ function App() {
                 ))}
               </div>
             </div>
-          </div>
-
-          <div className="bg-blue-50 rounded-lg p-4 min-h-[200px] shadow-md">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-sm font-medium text-gray-700">{t('AI Response')}</h2>
-            </div>
-            {isLoading ? (
-              <div className="flex items-center justify-center h-32">
-                <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
-              </div>
-            ) : (
-              <>
-                <p className="text-gray-900">{response || t('AI response will appear here...')}</p>
-                {response && (
-                  <div className="mt-4">
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">{t('Was this helpful?')}</h3>
-                    <div className="flex space-x-2">
-                      {[1, 2, 3, 4, 5].map((rating) => (
-                        <button
-                          key={rating}
-                          onClick={() => handleFeedback(rating)}
-                          className={`p-2 rounded-full ${
-                            feedbackRating === rating
-                              ? 'text-yellow-500'
-                              : 'text-gray-300 hover:text-yellow-500'
-                          }`}
-                        >
-                          <Star className="h-6 w-6" />
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
           </div>
         </div>
       </main>
