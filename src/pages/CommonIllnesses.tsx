@@ -29,6 +29,20 @@ const CommonIllnesses = () => {
             <Link to="/" className="text-blue-600 hover:underline">{t('Back to Home')}</Link>
           </div>
         </div>
+        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mt-8">
+          <h2 className="text-xl font-semibold mb-4">{t('Common Illnesses Images and Videos')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="aspect-w-16 aspect-h-9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/71flxC_I2c0?si=HHTSt1YdgqqiNaU2&amp;start=41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <img src="public\images\illness_1.jpg" alt="Common Illness 1" className="w-full h-full object-cover rounded-lg shadow-md" />
+              <img src="public\images\illness_2.jpg" alt="Common Illness 2" className="w-full h-full object-cover rounded-lg shadow-md" />
+              <img src="public\images\illness_3.jpg" alt="Common Illness 3" className="w-full h-full object-cover rounded-lg shadow-md" />
+              <img src="public\images\illness_4.jpg" alt="Common Illness 4" className="w-full h-full object-cover rounded-lg shadow-md" />
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
